@@ -2,7 +2,7 @@
 // Start session
 session_start();
 
-include "connectDB.php";
+include "../config/connectDB.php";
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["id"] = $user["id"];
 
             // Redirect to content page
-            header("Location: content.php");
+            header("Location: ../includes/content.php");
             exit;
         } else {
             $authenticationFailed = true;
@@ -32,10 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($authenticationFailed) {
         // Display the error message
-        header("Location: access.php?info=1");
+        header("Location: ../includes/access.php?info=1");
     }
-
 }
 
 // Close the database connection
-?>
